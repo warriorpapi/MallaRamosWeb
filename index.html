@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 Malla de la Princesa Francisca 💖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+            overflow: hidden;
+            border: 3px solid #ff69b4;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 50%, #ffc0cb 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: "💖";
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+        }
+
+        .header::after {
+            content: "💖";
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .felicitaciones {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .progress-container {
+            background: linear-gradient(135deg, #ffc0cb 0%, #ffb6c1 100%);
+            padding: 25px;
+            border-bottom: 3px solid #ff69b4;
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #ff69b4;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #c2185b;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #ad1457;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #ff69b4;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff1493, #ff69b4, #ffc0cb);
+            transition: width 0.5s ease;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: "✨";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .controls {
+            padding: 20px;
+            background: linear-gradient(135deg, #ffb6c1, #ffc0cb);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            border-bottom: 2px solid #ff69b4;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            border-color: #c2185b;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #ff69b4, #ffc0cb);
+            color: #c2185b;
+            border-color: #ff1493;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #c2185b, #ad1457);
+            color: white;
+            border-color: #880e4f;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        .malla-container {
+            padding: 30px;
+            background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .semestre {
+            background: rgba(255, 255, 255, 0.9);
+            border: 3px solid #ff69b4;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .semestre::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff1493, #ff69b4, #ffc0cb);
+        }
+
+        .semestre:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3);
+            border-color: #ff1493;
+        }
+
+        .semestre-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ffb6c1;
+        }
+
+        .semestre-titulo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #c2185b;
+            margin-bottom: 8px;
+        }
+
+        .semestre-info {
+            font-size: 0.95rem;
+            color: #ad1457;
+            font-weight: 600;
+        }
+
+        .ramo {
+            background: linear-gradient(135deg, #ffc0cb 0%, #ffb6c1 100%);
+            border: 2px solid #ff69b4;
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ramo::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .ramo:hover::before {
+            left: 100%;
+        }
+
+        .ramo:hover {
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            color: white;
+            transform: translateX(10px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        .ramo.aprobado {
+            background: linear-gradient(135deg, #ff1493 0%, #c2185b 100%);
+            border-color: #ad1457;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+        }
+
+        .ramo.aprobado::after {
+            content: "💖";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.3rem;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.2); }
+            100% { transform: translateY(-50%) scale(1); }
+        }
+
+        .ramo.aprobado .ramo-nombre {
+            text-decoration: line-through;
+            text-decoration-color: #ffc0cb;
+            text-decoration-thickness: 2px;
+        }
+
+        .ramo-nombre {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .ramo-codigo {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            font-family: 'Courier New', monospace;
+            font-weight: 500;
+        }
+
+        .area-basicas { 
+            border-left: 5px solid #ff1493;
+            background: linear-gradient(135deg, #ffc0cb 0%, #ffb6c1 100%);
+        }
+        .area-sociales { 
+            border-left: 5px solid #ff69b4;
+            background: linear-gradient(135deg, #ffb6c1 0%, #ffa0b6 100%);
+        }
+        .area-complementaria { 
+            border-left: 5px solid #c2185b;
+            background: linear-gradient(135deg, #ffa0b6 0%, #ff8fa3 100%);
+        }
+        .area-clinica { 
+            border-left: 5px solid #ad1457;
+            background: linear-gradient(135deg, #ff8fa3 0%, #ff7e95 100%);
+        }
+        .area-integracion { 
+            border-left: 5px solid #880e4f;
+            background: linear-gradient(135deg, #ff7e95 0%, #ff6d8a 100%);
+        }
+        .area-integral { 
+            border-left: 5px solid #ff69b4;
+            background: linear-gradient(135deg, #ffcccb 0%, #ffb6c1 100%);
+        }
+
+        .leyenda {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+            border-top: 3px solid #ff69b4;
+        }
+
+        .leyenda-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #c2185b;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: 2px solid #ffb6c1;
+        }
+
+        .leyenda-color {
+            width: 25px;
+            height: 6px;
+            border-radius: 3px;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 20px;
+            animation: float 3s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .malla-container {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .progress-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .header::before,
+            .header::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>💖 Malla de la Princesa Francisca 💖</h1>
+            <p>¡Felicidades Francisca, eres la mejor! ✨</p>
+        </div>
+
+        <div class="felicitaciones">
+            ✨ ¡Sigue así Francisca, estás haciendo un trabajo increíble! ✨
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-stats">
+                <div class="stat">
+                    <div class="stat-number" id="ramosAprobados">0</div>
+                    <div class="stat-label">💖 Ramos Aprobados</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="ramosTotal">0</div>
+                    <div class="stat-label">🌸 Total de Ramos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="porcentaje">0%</div>
+                    <div class="stat-label">✨ Tu Progreso</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="semestreActual">1</div>
+                    <div class="stat-label">🎯 Semestre Actual</div>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-success" onclick="marcarTodosSemestre()">💖 Marcar Semestre Completo</button>
+            <button class="btn btn-primary" onclick="exportarProgreso()">📱 Exportar mi Progreso</button>
+            <button class="btn btn-primary" onclick="document.getElementById('importFile').click()">📂 Importar Progreso</button>
+            <button class="btn btn-danger" onclick="resetearProgreso()">🔄 Reiniciar Todo</button>
+            <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importarProgreso(event)">
+        </div>
+
+        <div class="malla-container" id="mallaContainer">
+            <!-- Los semestres se generarán dinámicamente -->
+        </div>
+
+        <div class="leyenda">
+            <div class="leyenda-item">
+                <div class="leyenda-color" style="background: #ff1493;"></div>
+                <span>💊 Ciencias Básicas</span>
+            </div>
+            <div class="leyenda-item">
+                <div class="leyenda-color" style="background: #ff69b4;"></div>
+                <span>👥 Ciencias Sociales</span>
+            </div>
+            <div class="leyenda-item">
+                <div class="leyenda-color" style="background: #c2185b;"></div>
+                <span>📚 Formación Complementaria</span>
+            </div>
+            <div class="leyenda-item">
+                <div class="leyenda-color" style="background: #ad1457;"></div>
+                <span>🏥 Campo Clínico</span>
+            </div>
+            <div class="leyenda-item">
+                <div class="leyenda-color" style="background: #880e4f;"></div>
+                <span>🎓 Integración</span>
+            </div>
+            <div class="leyenda-item">
+                <div class="leyenda-color" style="background: #ff69b4;"></div>
+                <span>🌟 Formación Integral</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de la malla curricular
+        const mallaCurricular = {
+            "I SEMESTRE": [
+                { nombre: "BIOLOGÍA CELULAR", codigo: "DBIO 1069", area: "basicas" },
+                { nombre: "ANATOMÍA HUMANA", codigo: "DMOR 0003", area: "basicas" },
+                { nombre: "QUÍMICA GENERAL Y ORGÁNICA", codigo: "DQUI 1035", area: "basicas" },
+                { nombre: "BASES CONCEPTUALES DE LA GESTIÓN DEL CUIDADO", codigo: "ENFE A001", area: "clinica" },
+                { nombre: "PSICOLOGÍA DEL DESARROLLO Y APRENDIZAJE", codigo: "ENFE A002", area: "sociales" }
+            ],
+            "II SEMESTRE": [
+                { nombre: "ESTRATEGIAS PARA EL APRENDIZAJE", codigo: "ASIGESAP01", area: "complementaria" },
+                { nombre: "FISIOLOGÍA HUMANA", codigo: "DBIO 1075", area: "basicas" },
+                { nombre: "HISTOEMBRIOLOGÍA", codigo: "DMOR 0012", area: "basicas" },
+                { nombre: "BIOQUÍMICA GENERAL", codigo: "DBIO 1076", area: "basicas" },
+                { nombre: "PRIMEROS AUXILIOS", codigo: "ENFE B001", area: "clinica" },
+                { nombre: "SOCIOANTROPOLOGÍA EN LA SALUD", codigo: "ENFE B002", area: "sociales" }
+            ],
+            "III SEMESTRE": [
+                { nombre: "MICROBIOLOGÍA GENERAL", codigo: "DBIO 1072", area: "basicas" },
+                { nombre: "FARMACOLOGÍA GENERAL", codigo: "DBIO 1044", area: "basicas" },
+                { nombre: "FARMACOLOGÍA APLICADA", codigo: "DBIO 1045", area: "basicas" },
+                { nombre: "FISIOPATOLOGÍA", codigo: "ENFE C001", area: "clinica" },
+                { nombre: "ENFERMERÍA EN EL CICLO VITAL", codigo: "ENFE C002", area: "clinica" },
+                { nombre: "EDUCACIÓN EN SALUD", codigo: "ENFE C003", area: "sociales" }
+            ],
+            "IV SEMESTRE": [
+                { nombre: "ENFERMERÍA EN SALUD COMUNITARIA I", codigo: "ENFE D001", area: "clinica" },
+                { nombre: "METODOLOGÍAS DE ENSEÑANZA Y APRENDIZAJE EN SALUD", codigo: "ENFE D002", area: "complementaria" },
+                { nombre: "GESTIÓN DEL CUIDADO EN LA PERSONA", codigo: "ENFE D003", area: "clinica" },
+                { nombre: "COMUNICACIÓN E INTERACCIÓN HUMANA", codigo: "ENFE D004", area: "sociales" },
+                { nombre: "EPIDEMIOLOGÍA", codigo: "ENFE 0014", area: "complementaria" },
+                { nombre: "ÉTICA", codigo: "FILS 0002", area: "sociales" }
+            ],
+            "V SEMESTRE": [
+                { nombre: "ELECTIVO DE FORMACIÓN INTEGRAL", codigo: "ELEFORIN01", area: "integral" },
+                { nombre: "GESTIÓN DEL CUIDADO EN EL ADULTO", codigo: "ENFE E001", area: "clinica" },
+                { nombre: "ENFERMERÍA EN SALUD MENTAL", codigo: "ENFE E002", area: "clinica" },
+                { nombre: "ADMINISTRACIÓN EN ENFERMERÍA", codigo: "ENFE E003", area: "complementaria" },
+                { nombre: "ESTADÍSTICA", codigo: "DMAE E003", area: "complementaria" },
+                { nombre: "ANTROPOLOGÍA", codigo: "FILS 0001", area: "sociales" }
+            ],
+            "VI SEMESTRE": [
+                { nombre: "GESTIÓN DEL CUIDADO EN EL ADULTO MAYOR", codigo: "ENFE F001", area: "clinica" },
+                { nombre: "GESTIÓN DEL CUIDADO EN LA MUJER Y RECIÉN NACIDO", codigo: "ENFE F002", area: "clinica" },
+                { nombre: "ENFERMERÍA EN ALTERACIONES DE SALUD MENTAL", codigo: "ENFE F003", area: "clinica" },
+                { nombre: "GESTIÓN DE ENFERMERÍA EN SERVICIOS CLÍNICOS", codigo: "ENFE F004", area: "complementaria" },
+                { nombre: "ÉTICA EN ENFERMERÍA", codigo: "ENFE0031", area: "sociales" }
+            ],
+            "VII SEMESTRE": [
+                { nombre: "ELECTIVO PROFESIONAL", codigo: "ELE01ENFE", area: "integral" },
+                { nombre: "ENFERMERÍA DE URGENCIA", codigo: "ENFE G001", area: "clinica" },
+                { nombre: "GESTIÓN DEL CUIDADO EN EL NIÑO Y LA NIÑA", codigo: "ENFE G002", area: "clinica" },
+                { nombre: "INVESTIGACIÓN I", codigo: "ENFE 0028", area: "complementaria" }
+            ],
+            "VIII SEMESTRE": [
+                { nombre: "ENFERMERÍA EN SALUD COMUNITARIA II", codigo: "ENFE H001", area: "clinica" },
+                { nombre: "INVESTIGACIÓN II", codigo: "ENFE 0033", area: "complementaria" },
+                { nombre: "GESTIÓN DEL CUIDADO EN LOS SERVICIOS DE URGENCIA", codigo: "ENFE 0034", area: "clinica" },
+                { nombre: "GESTIÓN DEL CUIDADO EN EL ADOLESCENTE", codigo: "ENFE 0035", area: "clinica" }
+            ],
+            "IX SEMESTRE": [
+                { nombre: "INTERNADO INTRAHOSPITALARIO", codigo: "ENFE I001", area: "integracion" }
+            ],
+            "X SEMESTRE": [
+                { nombre: "INTERNADO EXTRAHOSPITALARIO", codigo: "ENFE I002", area: "integracion" }
+            ]
+        };
+
+        // Funciones principales
+        let ramosAprobados = JSON.parse(localStorage.getItem('ramosAprobadosFrancisca')) || [];
+
+        function inicializarMalla() {
+            const container = document.getElementById('mallaContainer');
+            container.innerHTML = '';
+
+            Object.keys(mallaCurricular).forEach(semestre => {
+                const semestreDiv = document.createElement('div');
+                semestreDiv.className = 'semestre';
+                
+                const ramos = mallaCurricular[semestre];
+                const ramosAprobadosEnSemestre = ramos.filter(ramo => ramosAprobados.includes(ramo.codigo)).length;
+                
+                semestreDiv.innerHTML = `
+                    <div class="semestre-header">
+                        <div class="semestre-titulo">${semestre}</div>
+                        <div class="semestre-info">💖 ${ramosAprobadosEnSemestre}/${ramos.length} completados</div>
+                    </div>
+                    <div class="ramos-container">
+                        ${ramos.map(ramo => `
+                            <div class="ramo area-${ramo.area} ${ramosAprobados.includes(ramo.codigo) ? 'aprobado' : ''}" 
+                                 onclick="toggleRamo('${ramo.codigo}')">
+                                <div class="ramo-nombre">${ramo.nombre}</div>
+                                <div class="ramo-codigo">${ramo.codigo}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                
+                container.appendChild(semestreDiv);
+            });
+
+            actualizarEstadisticas();
+        }
+
+        function toggleRamo(codigo) {
+            const index = ramosAprobados.indexOf(codigo);
+            if (index > -1) {
+                ramosAprobados.splice(index, 1);
+            } else {
+                ramosAprobados.push(codigo);
+                crearCorazon(); // Efecto visual al aprobar
+            }
+            localStorage.setItem('ramosAprobadosFrancisca', JSON.stringify(ramosAprobados));
+            inicializarMalla();
+        }
+
+        function actualizarEstadisticas() {
+            const totalRamos = Object.values(mallaCurricular).flat().length;
+            const aprobados = ramosAprobados.length;
+            const porcentaje = Math.round((aprobados / totalRamos) * 100);
+            
+            document.getElementById('ramosAprobados').textContent = aprobados;
+            document.getElementById('ramosTotal').textContent = totalRamos;
+            document.getElementById('porcentaje').textContent = porcentaje + '%';
+            document.getElementById('progressFill').style.width = porcentaje + '%';
+            
+            // Calcular semestre sugerido
+            let semestreActual = 1;
+            for (let i = 1; i <= 10; i++) {
+                const semestreKey = i === 1 ? "I SEMESTRE" : 
+                                  i === 2 ? "II SEMESTRE" :
+                                  i === 3 ? "III SEMESTRE" :
+                                  i === 4 ? "IV SEMESTRE" :
+                                  i === 5 ? "V SEMESTRE" :
+                                  i === 6 ? "VI SEMESTRE" :
+                                  i === 7 ? "VII SEMESTRE" :
+                                  i === 8 ? "VIII SEMESTRE" :
+                                  i === 9 ? "IX SEMESTRE" : "X SEMESTRE";
+                
+                const ramosSemestre = mallaCurricular[semestreKey];
+                const ramosAprobadosEnSemestre = ramosSemestre.filter(ramo => ramosAprobados.includes(ramo.codigo)).length;
+                
+                if (ramosAprobadosEnSemestre < ramosSemestre.length) {
+                    semestreActual = i;
+                    break;
+                }
+                if (i === 10 && ramosAprobadosEnSemestre === ramosSemestre.length) {
+                    semestreActual = "🎓";
+                }
+            }
+            
+            document.getElementById('semestreActual').textContent = semestreActual;
+        }
+
+        function marcarTodosSemestre() {
+            const semestre = prompt("¿Qué semestre quieres marcar como completo, Francisca? 💖\n(I, II, III, IV, V, VI, VII, VIII, IX, X)");
+            if (!semestre) return;
+            
+            const semestreKey = semestre.toUpperCase() + " SEMESTRE";
+            if (mallaCurricular[semestreKey]) {
+                mallaCurricular[semestreKey].forEach(ramo => {
+                    if (!ramosAprobados.includes(ramo.codigo)) {
+                        ramosAprobados.push(ramo.codigo);
+                    }
+                });
+                localStorage.setItem('ramosAprobadosFrancisca', JSON.stringify(ramosAprobados));
+                inicializarMalla();
+                
+                // Celebración con corazones
+                for(let i = 0; i < 10; i++) {
+                    setTimeout(() => crearCorazon(), i * 200);
+                }
+            } else {
+                alert("Semestre no válido, Francisca. Usa: I, II, III, IV, V, VI, VII, VIII, IX, X 💖");
+            }
+        }
+
+        function exportarProgreso() {
+            const data = {
+                ramosAprobados: ramosAprobados,
+                fecha: new Date().toISOString(),
+                carrera: "Enfermería",
+                estudiante: "Francisca 💖"
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `progreso_francisca_enfermeria_${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function importarProgreso(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (data.ramosAprobados && Array.isArray(data.ramosAprobados)) {
+                        ramosAprobados = data.ramosAprobados;
+                        localStorage.setItem('ramosAprobadosFrancisca', JSON.stringify(ramosAprobados));
+                        inicializarMalla();
+                        alert('¡Progreso importado exitosamente, Francisca! 💖');
+                    } else {
+                        alert('Archivo no válido 😢');
+                    }
+                } catch (error) {
+                    alert('Error al leer el archivo 😞');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function resetearProgreso() {
+            if (confirm('¿Estás segura de que quieres resetear todo tu progreso, Francisca? 💔\nEsta acción no se puede deshacer.')) {
+                ramosAprobados = [];
+                localStorage.removeItem('ramosAprobadosFrancisca');
+                inicializarMalla();
+                alert('Progreso reseteado, Francisca. ¡A empezar de nuevo! 💪💖');
+            }
+        }
+
+        // Efecto de corazones flotantes
+        function crearCorazon() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            
+            document.getElementById('floatingHearts').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // Crear corazones automáticamente cada cierto tiempo
+        setInterval(crearCorazon, 8000);
+
+        // Inicializar la aplicación
+        document.addEventListener('DOMContentLoaded', function() {
+            inicializarMalla();
+            // Crear algunos corazones iniciales
+            setTimeout(() => {
+                for(let i = 0; i < 3; i++) {
+                    setTimeout(crearCorazon, i * 1000);
+                }
+            }, 1000);
+        });
+
+        // Agregar efectos de sonido (opcional - solo visual)
+        function celebrarAprobacion() {
+            const mensajes = [
+                "¡Excelente trabajo, Francisca! 💖",
+                "¡Sigue así, princesa! ✨",
+                "¡Estás haciendo increíble! 🌟",
+                "¡Qué orgullosos estamos de ti! 💕",
+                "¡Eres la mejor estudiante! 👑"
+            ];
+            
+            if (ramosAprobados.length > 0 && ramosAprobados.length % 5 === 0) {
+                const mensaje = mensajes[Math.floor(Math.random() * mensajes.length)];
+                setTimeout(() => alert(mensaje), 500);
+            }
+        }
+    </script>
+</body>
+</html>
